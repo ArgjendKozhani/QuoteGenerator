@@ -60,4 +60,15 @@ margin-bottom: 4%;
    width: 300px;
     height: auto;
   }
+  button{
+   width: 80px;
+   height: 40px;
+   
+   border-radius: 10px;
+   box-shadow: 2px 2px;
+   border: none;
+   background-color: hsl(34, 78%, 91%);
+   cursor: pointer;
+   border-color: hsl(34, 58%, 85%);
+}
 }
