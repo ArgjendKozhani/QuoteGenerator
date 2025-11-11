@@ -7,7 +7,7 @@ function GetQuote() {
   
     async function showQuote() {
         try {
-            const url = "http://api.quotable.io/random"
+            const url = "https://api.quotable.io/random"
             const response = await fetch(url)
             const getData = await response.json()
             setData(getData)
