@@ -33,7 +33,7 @@ function GetQuote() {
                 <div className="container">
                     <h2>Quote of the day</h2>
                     <button onClick={showQuote}>New Quote</button>
-                    <p className="quote">"{data.content}"</p>
+                    <p className="quote">"{data.quote}"</p>
                     <i className="author">{data.author}</i>
 
                 </div>
