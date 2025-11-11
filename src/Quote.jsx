@@ -7,7 +7,8 @@ function GetQuote() {
   
     async function showQuote() {
         try {
-            const url = "https://zenquotes.io/api/random";
+           const url = "https://dummyjson.com/quotes/random";
+
 
             const response = await fetch(url)
             const getData = await response.json()
