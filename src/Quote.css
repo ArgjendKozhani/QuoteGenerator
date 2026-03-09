@@ -1,74 +1,254 @@
-body{
+.page {
+    min-height: 100vh;
     display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 5%;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.page::before,
+.page::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.18;
+    pointer-events: none;
+}
+.page::before {
+    width: 420px;
+    height: 420px;
+    background: #e040fb;
+    top: -120px;
+    right: -100px;
+}
+.page::after {
+    width: 320px;
+    height: 320px;
+    background: #448aff;
+    bottom: -80px;
+    left: -80px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 24px;
+    padding: 2.5rem 2.5rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+    position: relative;
+    z-index: 1;
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    padding-top: 0.4rem;
+}
+
+.quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    line-height: 0.7;
+    color: rgba(255, 255, 255, 0.12);
+    user-select: none;
+    pointer-events: none;
+}
+
+.card-body {
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote-content {
+    animation: fadeSlideIn 0.4s ease both;
+}
+
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.92);
+    quotes: none;
+    margin: 0;
+}
+
+.divider {
+    width: 36px;
+    height: 2px;
+    background: linear-gradient(90deg, #e040fb, #448aff);
+    border-radius: 2px;
+    margin: 1.25rem 0;
+}
+
+.author {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid rgba(255, 255, 255, 0.12);
+    border-top-color: rgba(200, 150, 255, 0.85);
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error-msg {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 120, 120, 0.9);
     text-align: center;
-    margin-top: 10%;
-    background-color: burlywood;
-    width: 400px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 1px 2px 10px;
-}
-h2{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-}
-.quote{
-    font-family: "Fjalla One", serif;
-    font-size: 20px;
-    width: 300px;
-    height: auto;
+    padding: 1.5rem 0;
 }
 
-button{
-   width: 80px;
-   height: 40px;
-   
-   border-radius: 10px;
-   box-shadow: 2px 2px;
-   border: none;
-   background-color: hsl(34, 78%, 91%);
-   cursor: pointer;
-   border-color: hsl(34, 58%, 85%);
-}
-button:hover{
-    background-color: hsl(34, 78%, 85%);
-     width: 83px;
-   height: 43px;
-}
-.author{
-margin-bottom: 4%;
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
-
-@media (max-width: 480px) {
-  .container {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  margin-top: 65%;
-   width: 300px;
-    height: auto;
-  }
-  button{
-   width: 80px;
-   height: 40px;
-   
-   border-radius: 10px;
-   box-shadow: 2px 2px;
-   border: none;
-   background-color: hsl(34, 78%, 91%);
-   cursor: pointer;
-   border-color: hsl(34, 58%, 85%);
+.btn-new {
+    padding: 0.6rem 1.6rem;
+    background: linear-gradient(135deg, #c840f0, #7c4dff);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 18px rgba(180, 64, 251, 0.4);
 }
+
+.btn-new:hover:not(:disabled) {
+    opacity: 0.88;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(180, 64, 251, 0.55);
+}
+
+.btn-new:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(180, 64, 251, 0.35);
+}
+
+.btn-new:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-tweet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 1.25rem;
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
+}
+
+.btn-tweet:hover {
+    background: rgba(255, 255, 255, 0.13);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .card {
+        padding: 2rem 1.75rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .quote-mark {
+        font-size: 5.5rem;
+    }
+
+    .quote {
+        font-size: 1.1rem;
+        line-height: 1.75;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-new,
+    .btn-tweet {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        padding: 1.5rem 1.25rem 1.25rem;
+        border-radius: 16px;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
 }
